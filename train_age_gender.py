@@ -8,7 +8,7 @@ face_detector = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_front
 RealPeople = ['Aditya'] # Replace with actual names
 
 #Location of your folder
-path = r"C:\Users\adity\OneDrive\Desktop\FaceRec\RealPeople" 
+path = r"C:\Users\adity\OneDrive\Desktop\Project\FaceRec\RealPeople" 
 
 labels = []
 features = []
