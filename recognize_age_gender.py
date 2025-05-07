@@ -2,7 +2,7 @@ import cv2
 import os
 import requests
 
-PersonNames = ['Aditya'] # Update this list with the names you used in training
+PersonNames = ['Aditya'] #names
 cap = cv2.VideoCapture(0)
 
 my_model = cv2.face.LBPHFaceRecognizer_create()
@@ -10,7 +10,7 @@ my_model.read("face_recogonizer.yml")
 
 face_detector = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
-# --- Age and Gender Detection Model URLs ---
+# Age and Gender Detection Model URLs
 age_deploy_url = "https://raw.githubusercontent.com/opencv/opencv_extra/master/testdata/dnn/age_deploy.prototxt"
 age_net_url = "https://raw.githubusercontent.com/opencv/opencv_extra/master/testdata/dnn/age_net.caffemodel"
 gender_deploy_url = "https://raw.githubusercontent.com/opencv/opencv_extra/master/testdata/dnn/gender_deploy.prototxt"
@@ -65,9 +65,17 @@ while True:
         name_text = PersonNames[label]
         confidence_text = f"Confidence: {round(confidence, 2)}"
 
-        cv2.rectangle(frame, (fx, fy), (fx + fw, fy + fh), (10, 255, 10), 3)
-        cv2.putText(frame, name_text, (fx, fy - 55), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 100, 20), 2)
-        cv2.putText(frame, confidence_text, (fx, fy - 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 100, 20), 2)
+        confidence_threshold = 70  # You can tweak this value
+
+        if confidence < confidence_threshold:
+        # Recognized
+            cv2.rectangle(frame, (fx, fy), (fx + fw, fy + fh), (10, 255, 10), 3)
+            cv2.putText(frame, name_text, (fx, fy - 55), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 100, 20), 2)
+            cv2.putText(frame, confidence_text, (fx, fy - 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 100, 20), 2)
+        else:
+        # Unrecognized
+            cv2.rectangle(frame, (fx, fy), (fx + fw, fy + fh), (0, 0, 255), 3)
+            cv2.putText(frame, "Unknown", (fx, fy - 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
 
         # --- Age and Gender Prediction ---
         blob = cv2.dnn.blobFromImage(face_roi_color, 1, (227, 227), MODEL_MEAN_VALUES, swapRB=False)

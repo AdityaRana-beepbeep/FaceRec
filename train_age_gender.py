@@ -7,8 +7,8 @@ face_detector = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_front
 
 RealPeople = ['Aditya'] # Replace with actual names
 
-# --- STEP 2: Update this path to the location of your "Real People Dataset" folder ---
-path = r"C:\Users\adity\OneDrive\Desktop\FaceRec\RealPeople" # Replace with the actual path
+#Location of your folder
+path = r"C:\Users\adity\OneDrive\Desktop\FaceRec\RealPeople" 
 
 labels = []
 features = []
@@ -30,7 +30,7 @@ for person_name in RealPeople:
                 face_roi = gray_scale[y:y + h, x:x + w]
                 face_resized = cv2.resize(face_roi, (100, 100))
                 features.append(face_resized)
-                labels.append(label)
+                labels.append(label)  
         except Exception as e:
             print(f"Error reading or processing image: {img_path} - {e}")
 
