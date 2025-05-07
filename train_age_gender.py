@@ -5,10 +5,10 @@ import numpy as np
 
 face_detector = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 
-RealPeople = ['Aditya', 'Bro', 'Dad', 'Mom'] # Replace with actual names
+RealPeople = ['Aditya'] # Replace with actual names
 
 # --- STEP 2: Update this path to the location of your "Real People Dataset" folder ---
-path = r"C:\Users\adity\OneDrive\Desktop\Face Recognition with Age and Gender\RealPeople" # Replace with the actual path
+path = r"C:\Users\adity\OneDrive\Desktop\FaceRec\RealPeople" # Replace with the actual path
 
 labels = []
 features = []

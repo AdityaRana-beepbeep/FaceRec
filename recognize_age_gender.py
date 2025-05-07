@@ -2,7 +2,7 @@ import cv2
 import os
 import requests
 
-PersonNames = ['Aditya', 'Bro', 'Dad', 'Mom'] # Update this list with the names you used in training
+PersonNames = ['Aditya'] # Update this list with the names you used in training
 cap = cv2.VideoCapture(0)
 
 my_model = cv2.face.LBPHFaceRecognizer_create()
