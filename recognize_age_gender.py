@@ -65,7 +65,7 @@ while True:
         name_text = PersonNames[label]
         confidence_text = f"Confidence: {round(confidence, 2)}"
 
-        confidence_threshold = 70  # You can tweak this value
+        confidence_threshold = 100  # You can tweak this value
 
         if confidence < confidence_threshold:
         # Recognized
